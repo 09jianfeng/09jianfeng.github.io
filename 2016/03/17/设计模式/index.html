@@ -1,0 +1,80 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>设计模式 | Hexo</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">设计模式</h1><a id="logo" href="/.">Hexo</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/"><i class="fa fa-user"> Über</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">设计模式</h1><div class="post-meta">Mar 17, 2016<span> | </span><span class="category"><a href="/categories/计算机基础/">计算机基础</a></span></div><div class="post-content"><h1 id="六大设计原则"><a href="#六大设计原则" class="headerlink" title="六大设计原则"></a>六大设计原则</h1><ul>
+<li>单一职责原则</li>
+<li>里氏替换原则</li>
+<li>依赖倒置原则</li>
+<li>接口隔离原则</li>
+<li>迪米特法则</li>
+<li>开闭原则</li>
+</ul>
+<h2 id="1-单一职责原则-（SRP）"><a href="#1-单一职责原则-（SRP）" class="headerlink" title="1.单一职责原则 （SRP）"></a>1.单一职责原则 （SRP）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">单一原则要求一个接口或者类只有一个原因引起变化、也就是一个接口或者类只有一个职责</span><br></pre></td></tr></table></figure>
+<p><code>好处：</code></p>
+<ul>
+<li>类的复杂度降低，实现什么职责都有清晰明确的定义</li>
+<li>可读性提高</li>
+<li>可维护性提高</li>
+<li>变更引起的风险降低。变更是必不可少的，如果一个类的单一职责设计得好，那么接口的变更对只对相应的实现类有影响，对其他接口没有影响。对系统的可扩展性、可维护性都有很大的帮助</li>
+</ul>
+<p><code>注意：</code></p>
+<p>单一职责原则提出了一个编写程序的标准，用“职责”或“变化原因”来衡量接口或类设计得是否优良，但是“职责”和“变化原因”都是不可度量的，因项目而异，因环境而异。</p>
+<h2 id="2-里氏替换原则"><a href="#2-里氏替换原则" class="headerlink" title="2.里氏替换原则"></a>2.里氏替换原则</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">“所有引用基类的地方必须能透明地使用其子类的对象”</span><br><span class="line">通俗点讲就是：父类出现的地方，子类可以替换父类，并且不会产生任何问题与错误。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>子类必须完全实现父类的方法</li>
+<li>子类可以有自己的个性</li>
+<li>覆盖或者实现父类方法时，输入参数可以被放大</li>
+<li>覆写或者实现父类的方法时，输出结果可以缩小</li>
+</ul>
+<h2 id="3-依赖倒置原则"><a href="#3-依赖倒置原则" class="headerlink" title="3.依赖倒置原则"></a>3.依赖倒置原则</h2><p>“High level modules should not depend upon low level modules.Both should depend upon abstractions.Abstractions should not depend upon details.Details should depend upon abstractions.”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通俗点讲就是要让父类之间的模块有约束，而不应该在比较具体的子类之间进行模块依赖。在顶层进行依赖，不应该用比较底层的模块之间进行依赖。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>高层模块不应该依赖底层模块，两者都应该依赖其抽象</li>
+<li>抽象不应该依赖细节</li>
+<li>细节应该依赖抽象</li>
+</ul>
+<p><code>好处：</code></p>
+<p>采用依赖倒置，可以减少类之间的耦合性，提高系统的稳定性，降低并行开发引起的风险，提高代码的可读性，可维护性。</p>
+<p><strong>依赖倒置原则的本质就是通过抽象（接口或抽象类）使各个类或模块的实现彼此独立，不互相影响，实现模块间的松耦合，我们怎么在项目中使用这个规则呢？只要遵循以下的几个规则就可以：</strong></p>
+<ul>
+<li><p>每个类尽量都有接口或抽象类，或者抽象类和接口两者都具备</p>
+</li>
+<li><p>这是依赖倒置的基本要求，接口和抽象类都是属于抽象的，有了抽象才可能依赖倒置。</p>
+</li>
+<li><p>变量的表面类型尽量是接口或者是抽象类</p>
+</li>
+<li><p>很多书上说变量的类型一定要是接口或者是抽象类，这个有点绝对化了，比如一个工具类，xxxUtils一般是不需要接口或是抽象类的。还有，如果你要使用类的clone方法，就必须使用实现类，这个是JDK提供的一个规范。</p>
+</li>
+<li><p>任何类都不应该从具体类派生</p>
+</li>
+<li><p>尽量不要覆写基类的方法</p>
+</li>
+<li><p>如果基类是一个抽象类，而且这个方法已经实现了，子类尽量不要覆写。类间依赖的是抽象，覆写了抽象方法，对依赖的稳定性会产生一定的影响。</p>
+</li>
+<li><p>结合里氏替换原则使用</p>
+</li>
+</ul>
+<h2 id="4-接口隔离原则"><a href="#4-接口隔离原则" class="headerlink" title="4.接口隔离原则"></a>4.接口隔离原则</h2><p>客户端不应该依赖它不需要的接口，类间的依赖应该建立在最小接口上。 意思就是建立单一接口，而不是建立臃肿的接口，对接口尽量细化</p>
+<p>“这与单一职责原则不是相同的吗？错，接口隔离原则与单一职责的审视角度是不相同的，单一职责要求的是类和接口职责单一，注重的是职责，这是业务逻辑上的划分，而接口隔离原则要求接口的方法尽量少。”</p>
+<p><strong>最佳实践</strong></p>
+<p>接口隔离原则是对接口的定义，同时也是对类的定义，接口和类尽量使用原子接口或原子类来组装。但是，这个原子该怎么划分是设计模式中的一大难题，在实践中可以根据以下几个规则来衡量：</p>
+<ul>
+<li><p>一个接口只服务于一个子模块或业务逻辑；</p>
+</li>
+<li><p>通过业务逻辑压缩接口中的public方法，接口时常去回顾，尽量让接口达到“满身筋骨肉”，而不是“肥嘟嘟”的一大堆方法；</p>
+</li>
+<li><p>已经被污染了的接口，尽量去修改，若变更的风险较大，则采用适配器模式进行转化处理；</p>
+</li>
+<li><p>了解环境，拒绝盲从。每个项目或产品都有特定的环境因素，别看到大师是这样做的你就照抄。千万别，环境不同，接口拆分的标准就不同。深入了解业务逻辑，最好的接口设计就出自你的手中！</p>
+</li>
+</ul>
+<h2 id="5-迪米特法则"><a href="#5-迪米特法则" class="headerlink" title="5.迪米特法则"></a>5.迪米特法则</h2><p>迪米特法则（Law of Demeter,LoD）也称为最少知识原则（Least Knowledge Principle,LKP），虽然名字不同，但描述的是同一个规则：一个对象应该对其他对象有最少的了解。通俗地讲，一个类应该对自己需要耦合或调用的类知道得最少，你（被耦合或调用的类）的内部是如何复杂都和我没关系，那是你的事情，我就知道你提供的这么多public方法，我就调用这么多，其他的我一概不关心。</p>
+<p>类只跟朋友类交流，朋友类的定义是这样的：出现在成员变量、方法的输入输出参数中的类称为成员朋友类，而出现在方法体内部的类不属于朋友类</p>
+<h2 id="6-开闭原则"><a href="#6-开闭原则" class="headerlink" title="6.开闭原则"></a>6.开闭原则</h2><p>软件实体应该对扩展开放，对修改关闭，其含义是说一个软件实体应该通过扩展来实现变化，而不是通过修改已有的代码来实现变化。</p>
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><ul>
+<li>类图：</li>
+</ul>
+<p><img src="../img/design_prototype.png" alt="prototype"></p>
+<p>原型模型是一个非常简单的设计模式。客户端知道Prototype类。在运行时，抽象Prototype类的子类的任何子类都可以被客户端的意愿被复制。因此，无须手工创建就可以制造同一类型的多个实例。Prototype类声明了复制自身的接口，作为Prototype的子类，ConcretePrototype实现了Concrete复制自身的clone操作。这里的原型通过请求原型clone复制自身，创建一个新对象。</p>
+<ul>
+<li>原型使用场景</li>
+</ul>
+<p>1、</p>
+</div><div class="tags"><a href="/tags/计算机基础/">计算机基础</a></div><div class="post-nav"><a class="pre" href="/2016/04/03/MVVM reactiveCocoa/">MVVM ReactiveCocoa.md</a><a class="next" href="/2016/02/29/openssl/">openssl使用简介</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/工具/">工具</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/Objective-C/">Objective-C</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/Objective-C/Runtime/">Runtime</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/Objective-C/线程/">线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/Objective-C/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/Objective-C/设计模式/">设计模式</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/UIKit/">UIKit</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/xx/">xx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/图像/">图像</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/逆向/">逆向</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/opengl/">opengl</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/php/后端/">后端</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/jQuery/">jQuery</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/后端/redis/">redis</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/后端/redis/缓存/">缓存</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/图像/">图像</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机基础/">计算机基础</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/C/" style="font-size: 15px;">C++</a> <a href="/tags/Objective-C/" style="font-size: 15px;">Objective-C</a> <a href="/tags/图像/" style="font-size: 15px;">图像</a> <a href="/tags/php/" style="font-size: 15px;">php</a> <a href="/tags/sql/" style="font-size: 15px;">sql</a> <a href="/tags/后端/" style="font-size: 15px;">后端</a> <a href="/tags/搜索广告/" style="font-size: 15px;">搜索广告</a> <a href="/tags/Swift/" style="font-size: 15px;">Swift</a> <a href="/tags/xx/" style="font-size: 15px;">xx</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/视频编解码/" style="font-size: 15px;">视频编解码</a> <a href="/tags/图像质量/" style="font-size: 15px;">图像质量</a> <a href="/tags/打包/" style="font-size: 15px;">打包</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/javaScript/" style="font-size: 15px;">javaScript</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/逆向/" style="font-size: 15px;">逆向</a> <a href="/tags/缓存/" style="font-size: 15px;">缓存</a> <a href="/tags/加密/" style="font-size: 15px;">加密</a> <a href="/tags/计算机基础/" style="font-size: 15px;">计算机基础</a> <a href="/tags/Runtime/" style="font-size: 15px;">Runtime</a> <a href="/tags/xcode/" style="font-size: 15px;">xcode</a> <a href="/tags/UIKit/" style="font-size: 15px;">UIKit</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/C/" style="font-size: 15px;">C</a> <a href="/tags/Effective-Objective-C-2-0/" style="font-size: 15px;">Effective Objective-C 2.0</a> <a href="/tags/opengl/" style="font-size: 15px;">opengl</a> <a href="/tags/网络/" style="font-size: 15px;">网络</a> <a href="/tags/音视频/" style="font-size: 15px;">音视频</a> <a href="/tags/图片/" style="font-size: 15px;">图片</a> <a href="/tags/动画/" style="font-size: 15px;">动画</a> <a href="/tags/线程/" style="font-size: 15px;">线程</a> <a href="/tags/视频/" style="font-size: 15px;">视频</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/jQuery/" style="font-size: 15px;">jQuery</a> <a href="/tags/MVVM/" style="font-size: 15px;">MVVM</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/10/11/RGB与YUV格式转换/">RGB与YUV格式转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/颜色/">颜色</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/打印堆栈信息，保存现场/">打印堆栈信息，保存现场</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/22/mac-os开启php-Apache-MySQL环境搭建/">mac os开启php+Apache+MySQL环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/14/flv打包的h-264格式/">flv打包的h.264格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/NSObject与id的区别/">NSObject与id的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/C-虚函数、纯虚函数/">C++虚函数、纯虚函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/xcode工程嵌入工程/">xcode工程嵌入工程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/linux命令备忘-md/">linux命令备忘.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/cocoapod库制作/">cocoapod库制作</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Hexo.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
