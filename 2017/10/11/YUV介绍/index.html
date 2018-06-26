@@ -1,0 +1,101 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>YUV格式介绍 | 格物致知</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">YUV格式介绍</h1><a id="logo" href="/.">格物致知</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/"><i class="fa fa-user"> Über</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">YUV格式介绍</h1><div class="post-meta">Oct 11, 2017<span> | </span><span class="category"><a href="/categories/音视频/">音视频</a></span></div><div class="post-content"><h2 id="何为YUV"><a href="#何为YUV" class="headerlink" title="何为YUV"></a>何为YUV</h2><p>RGB相信大家都明白是什么，也知道怎么用RGB来表示一个颜色。YUV也可以用来表示颜色，可以从RGB中得到，为得是使得亮度跟颜色分开，这样可以兼容黑白电视（只需显示Y的程度）。现代采像一般是把采集的图像信号经分色、分别放大后得到RGB，再经过矩阵转换电路取得亮度信号Y和两个色差信号R-Y（U）、B-Y（V），最后发送端将亮度和发送端三个信号分别进行编码，用同一信道发出去。YUV也是分别需要1个字节来表示Y、U、V，但是可以方便减少采样而使得画质不会太大受损，这样可以大大的减少存储空间。</p>
+<h4 id="YUV中的Y"><a href="#YUV中的Y" class="headerlink" title="YUV中的Y"></a>YUV中的Y</h4><p>Y表示明亮度（Luminance或者luma），也叫做灰阶值，用来表示黑白的程度。这个值是透过RGB的信号来建立的，方法是将RGB的特定信号叠加在一起，转换公式稍后会说。</p>
+<h4 id="YUV中的UV"><a href="#YUV中的UV" class="headerlink" title="YUV中的UV"></a>YUV中的UV</h4><p>UV代表色度值（chrominance/chroma），是构成彩色的两个分量。用于描述图片的色彩和饱和度，用于指定像素的颜色。U值也叫做Cr值，反映了RGB输入值的红色部分与RGB信号亮度值之间的差异。V值也叫做Cb值，反映了RGB输入值的蓝色部分与RGB信号亮度之间的差异。</p>
+<h2 id="饱和度"><a href="#饱和度" class="headerlink" title="饱和度"></a>饱和度</h2><p>饱和度是指色彩的鲜艳程度，也称色彩的纯度。饱和度取决于该色中含色成分和消色成分（灰色）的比例。含色成分越大，饱和度越大；消色成分越大，饱和度越小。纯的颜色都是高度饱和的，如鲜红，鲜绿。混杂上白色，灰色或其他色调的颜色，是不饱和的颜色，如绛紫，粉红，黄褐等。完全不饱和的颜色根本没有色调，如黑白之间的各种灰色</p>
+<p>注：<a href="https://www.zhihu.com/question/23173178" target="_blank" rel="noopener">photoshop上颜色的其他课外知识</a></p>
+<p><img src="../img/yuv_1.jpg" alt=""></p>
+<h2 id="HSB"><a href="#HSB" class="headerlink" title="HSB"></a>HSB</h2><p> H(色相)：光的波长  </p>
+<p> S（饱和度）：颜色的纯度，比如红色，255，0，0为最纯。如果饱和度设置为50%，那么就变成255，128，128。</p>
+<p>B（亮度）：物体表面的反光率。比如：亮红是 255，0，0。如果亮度设置为50%，那么就变成 128，0，0.</p>
+<h2 id="YUV采样"><a href="#YUV采样" class="headerlink" title="YUV采样"></a>YUV采样</h2><h3 id="4-4-4-采样"><a href="#4-4-4-采样" class="headerlink" title="4:4:4 采样"></a>4:4:4 采样</h3><p>YUV三个信道抽样率相同，因此在生成的图像里，每个像素三个分量信息完整，经过8比特量化后，未经压缩占用3字节。例如：</p>
+<p>四个像素为：</p>
+<table>
+<thead>
+<tr>
+<th>[Y0 U0 V0]</th>
+<th>[Y1 U1 V1]</th>
+<th>[Y1 U1 V1]</th>
+<th>[Y1 U1 V1]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>存放的码流为：</p>
+<p>Y0 U0 V0 Y1 U1 V1 Y2 U2 V2 Y3 U3 V3</p>
+<p>映射的像素点为：</p>
+<table>
+<thead>
+<tr>
+<th>[Y0 U0 V0]</th>
+<th>[Y1 U1 V1]</th>
+<th>[Y2 U2 V2]</th>
+<th>[Y3 U3 V3]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-2-2采样"><a href="#4-2-2采样" class="headerlink" title="4:2:2采样"></a>4:2:2采样</h3><p>并不意味着只有Y、Cb而没有Cr分量。它指的是对每行扫描线来说，只有一种色度分量以2:1的抽样率存储，它指的是对每行扫描线来说，只有一种色度分量以2:1的抽样率存储。相邻的扫描行存储不同的色度分量，也就是说，如果一行是4:2:0和话，下一行就是4:0:2，再下一行是4:2:0….，以此类推。例如：</p>
+<p>八个像素为：</p>
+<table>
+<thead>
+<tr>
+<th>[Y0 U0 V0]</th>
+<th>[Y1 U1 V1]</th>
+<th>[Y2 U2 V2]</th>
+<th>[Y3 U3 V3]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> [Y5 U5 V5]</td>
+<td>[Y6 U6 V6]</td>
+<td>[Y7 U7 V7]</td>
+<td>[Y8 U8 V8]</td>
+</tr>
+</tbody>
+</table>
+<p> 存储的码流为（YUVY，packed格式）：</p>
+<p> Y0 U0 Y1 Y2 U2 Y3   Y5 V5 Y6 Y7 V7 Y8</p>
+<p> 映射出的像素点为：</p>
+<table>
+<thead>
+<tr>
+<th>[Y0 U0 V5]</th>
+<th>[Y1 U0 V5]</th>
+<th>[Y2 U2 V7]</th>
+<th>[Y3 U2 V7] </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Y5 U0 V5]</td>
+<td>[Y6 U0 V5]</td>
+<td>[Y7 U2 V7]</td>
+<td>[Y8 U2 V7] </td>
+</tr>
+</tbody>
+</table>
+<h2 id="YUV的存储格式"><a href="#YUV的存储格式" class="headerlink" title="YUV的存储格式"></a>YUV的存储格式</h2><p>通常有两大类：打包格式（packed）和平面格式（planar），前者将YUV分量存放在同个数组中，通常是几个相邻的像素组成一个宏像素；后者使用三个数组分开存放YUV三个分量，就像是一个三维平面一样。</p>
+<h3 id="YUV422-Plannar"><a href="#YUV422-Plannar" class="headerlink" title="YUV422 Plannar"></a>YUV422 Plannar</h3><p><img src="../img/yuv2.png" alt=""></p>
+<h2 id="YUV422-Semi-Planar（半平面格式）"><a href="#YUV422-Semi-Planar（半平面格式）" class="headerlink" title="YUV422 Semi-Planar（半平面格式）"></a>YUV422 Semi-Planar（半平面格式）</h2><p><img src="../img/yuv3.png" alt=""></p>
+<p>NV12(UV)和NV21(VU)属于YUV420格式，是一种two-plane模式，即Y和UV分为两个Plane，但是UV（CbCr）为交错存储，而不是分为三个plane</p>
+<h2 id="YUV422-interleaved-packed模式"><a href="#YUV422-interleaved-packed模式" class="headerlink" title="YUV422 interleaved (packed模式)"></a>YUV422 interleaved (packed模式)</h2><p><img src="../img/yuv4.png" alt=""></p>
+<h2 id="4、YUV420-Plannar（YV12，YU12）"><a href="#4、YUV420-Plannar（YV12，YU12）" class="headerlink" title="4、YUV420 Plannar（YV12，YU12）"></a>4、YUV420 Plannar（YV12，YU12）</h2><p><img src="../img/yuv5.png" alt=""></p>
+<h2 id="问答："><a href="#问答：" class="headerlink" title="问答："></a>问答：</h2><h3 id="YUV-420数据为什么能省下内存"><a href="#YUV-420数据为什么能省下内存" class="headerlink" title="YUV 420数据为什么能省下内存"></a>YUV 420数据为什么能省下内存</h3><p>表示4组Y对应1组UV。<br>以 720x480的YUV图像为例子，解释一下数据存储格式。<br>720x480如果是RGB格式存储，R、G、B分别对应一个字节。所以需要 720*480*3个字节。<br>如果是yuv 420存储格式  4组y共用一组uv（共用的U是第一行第一个像素的U，V是第二行第二个像素的V）。 y占用一个字节，u占用一个字节，v占用一个字节。</p>
+<p>下面这个图经常误导人。下面这个图并不是像素的排列方式。注意不是像素的排列方式。一个像素是会同时显示Y以及UV的。下面这个图只是为了说明四个Y对应一个UV。说明亮度、色度的采样模式。四个像素共用的U是第一行第一个像素的U，V是第二行第二个像素的V。</p>
+<p><img src="../img/yuv7.png" alt=""></p>
+<p>无论怎样yuv的格式如何，一个像素依然是要由一个Y（一个字节），U（一个字节）、V（一个字节来显示）来表示。 420的格式是说 隔壁的四个像素分别有4个y，然后要用的U跟V是同一样的数据。 这样4个像素占用的内存就由以前的  4*3 （RGB）个字节变为。4个Y字节+1个UV字节就能表示。平均下来就是一个像素占用  8（一个Y一个字节）+ 16（U+V）／4 = 12位。</p>
+<p>所以420能比RGB剩下很多存储空间。</p>
+<h3 id="YUV-420的存储格式"><a href="#YUV-420的存储格式" class="headerlink" title="YUV 420的存储格式"></a>YUV 420的存储格式</h3><p>YUV的存储格式分为打包（packed）格式和平面（planar）格式</p>
+<h3 id="YUV420P是平面格式，分为I420和YV12。他们之间有什么不同？"><a href="#YUV420P是平面格式，分为I420和YV12。他们之间有什么不同？" class="headerlink" title="YUV420P是平面格式，分为I420和YV12。他们之间有什么不同？"></a>YUV420P是平面格式，分为I420和YV12。他们之间有什么不同？</h3><p>I420格式（YUV的标准格式）和YV12格式的不同处在U平面和V平面的位置不同。在I420格式中，U平面紧跟在Y平面之后，然后才是V平面（即：YUV）；但YV12则是相反（即：YVU）。<br>I420: YYYYYYYY UU VV    =&gt;YUV420P<br>YV12: YYYYYYYY VV UU    =&gt;YUV420P</p>
+<h3 id="NV12跟NV21有什么区别"><a href="#NV12跟NV21有什么区别" class="headerlink" title="NV12跟NV21有什么区别"></a>NV12跟NV21有什么区别</h3><p>NV12根NV21都是420的半平面格式，他们的区别只是在于U和V的存储顺序不一致</p>
+<p>NV12: YYYYYYYY UVUV     =&gt;YUV420SP<br>NV21: YYYYYYYY VUVU     =&gt;YUV420SP</p>
+</div><div class="tags"><a href="/tags/音视频/">音视频</a></div><div class="post-nav"><a class="next" href="/2017/09/01/颜色/">颜色</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/工具/">工具</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/Objective-C/">Objective-C</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/Objective-C/Runtime/">Runtime</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/Objective-C/线程/">线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/Objective-C/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/Objective-C/设计模式/">设计模式</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/UIKit/">UIKit</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/逆向/">逆向</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/opengl/">opengl</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/php/后端/">后端</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/jQuery/">jQuery</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/后端/redis/">redis</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/后端/redis/缓存/">缓存</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机基础/">计算机基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/音视频/">音视频</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/缓存/" style="font-size: 15px;">缓存</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/C/" style="font-size: 15px;">C++</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/Objective-C/" style="font-size: 15px;">Objective-C</a> <a href="/tags/php/" style="font-size: 15px;">php</a> <a href="/tags/sql/" style="font-size: 15px;">sql</a> <a href="/tags/后端/" style="font-size: 15px;">后端</a> <a href="/tags/搜索广告/" style="font-size: 15px;">搜索广告</a> <a href="/tags/Swift/" style="font-size: 15px;">Swift</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/音视频/" style="font-size: 15px;">音视频</a> <a href="/tags/打包/" style="font-size: 15px;">打包</a> <a href="/tags/xxxx/" style="font-size: 15px;">xxxx</a> <a href="/tags/图像/" style="font-size: 15px;">图像</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/javaScript/" style="font-size: 15px;">javaScript</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/逆向/" style="font-size: 15px;">逆向</a> <a href="/tags/opengl/" style="font-size: 15px;">opengl</a> <a href="/tags/metal/" style="font-size: 15px;">metal</a> <a href="/tags/openGL/" style="font-size: 15px;">openGL</a> <a href="/tags/加密/" style="font-size: 15px;">加密</a> <a href="/tags/计算机基础/" style="font-size: 15px;">计算机基础</a> <a href="/tags/Runtime/" style="font-size: 15px;">Runtime</a> <a href="/tags/UIKit/" style="font-size: 15px;">UIKit</a> <a href="/tags/xcode/" style="font-size: 15px;">xcode</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/C/" style="font-size: 15px;">C</a> <a href="/tags/Effective-Objective-C-2-0/" style="font-size: 15px;">Effective Objective-C 2.0</a> <a href="/tags/网络/" style="font-size: 15px;">网络</a> <a href="/tags/图片/" style="font-size: 15px;">图片</a> <a href="/tags/动画/" style="font-size: 15px;">动画</a> <a href="/tags/线程/" style="font-size: 15px;">线程</a> <a href="/tags/视频/" style="font-size: 15px;">视频</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/jQuery/" style="font-size: 15px;">jQuery</a> <a href="/tags/MVVM/" style="font-size: 15px;">MVVM</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/10/11/YUV介绍/">YUV格式介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/颜色/">颜色</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/打印堆栈信息，保存现场/">打印堆栈信息，保存现场</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/22/mac-os开启php-Apache-MySQL环境搭建/">mac os开启php+Apache+MySQL环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/14/flv打包的h-264格式/">flv打包的h.264格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/NSObject与id的区别/">NSObject与id的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/C-虚函数、纯虚函数/">C++虚函数、纯虚函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/xcode工程嵌入工程/">xcode工程嵌入工程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/linux命令备忘-md/">linux命令备忘.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/cocoapod库制作/">cocoapod库制作</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">格物致知.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
